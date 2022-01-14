@@ -28,6 +28,7 @@ end</code></pre><pre class="documenter-example-output"><code class="nohighlight 
     a.p2 = a.pos .- offset
 end</code></pre><p>Some geometry convenience functions</p><pre><code class="language-julia hljs">unitvector(φ) = reverse(sincos(φ))
 cross2D(a, b) = a[1] * b[2] - a[2] * b[1]</code></pre><h2 id="Stepping-functions"><a class="docs-heading-anchor" href="#Stepping-functions">Stepping functions</a><a id="Stepping-functions-1"></a><a class="docs-heading-anchor-permalink" href="#Stepping-functions" title="Permalink"></a></h2><pre><code class="language-julia hljs">function model_step!(model)
+    extent = model.space.extent
     for a in allagents(model)
         if a.growthprog ≥ 1
             # When a cell has matured, it divides into two daughter cells on the
@@ -51,8 +52,8 @@ cross2D(a, b) = a[1] * b[2] - a[2] * b[1]</code></pre><h2 id="Stepping-functions
     end
 end</code></pre><p>Here we use a custom <a href="examples/@ref"><code>move_agent!</code></a> function, because the agents have several moving parts. Notice that the first derivatives of all degrees of freedom is directly proportional to the force applied to them. This overdamped approximation is valid for small length scales, where viscous forces dominate over inertia.</p><pre><code class="language-julia hljs">function agent_step!(agent::SimpleCell, model::ABM)
     fsym, compression, torque = transform_forces(agent)
-    new_pos = agent.pos .+ model.dt * model.mobility .* fsym
-    move_agent!(agent, new_pos, model)
+    direction =  model.dt * model.mobility .* fsym
+    walk!(agent, direction, model)
     agent.length += model.dt * model.mobility .* compression
     agent.orientation += model.dt * model.mobility .* torque
     agent.growthprog += model.dt * agent.growthrate
@@ -125,4 +126,4 @@ end</code></pre><p>set up some nice colors</p><pre><code class="language-julia h
     title = &quot;Growing bacteria&quot;
 )</code></pre><video width="auto" controls autoplay loop>
 <source src="../bacteria.mp4" type="video/mp4">
-</video></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../">« Introduction</a><a class="docs-footer-nextpage" href="../battle/">Battle Royale »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Saturday 8 January 2022 10:06">Saturday 8 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+</video></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../">« Introduction</a><a class="docs-footer-nextpage" href="../battle/">Battle Royale »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Friday 14 January 2022 10:05">Friday 14 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
