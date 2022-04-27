@@ -58,7 +58,7 @@ mutable struct Fighter <: AbstractAgent
     shape::Symbol # shape of the fighter conveys what action they are currently doing
 end
 
-# As you can see, the properties of out agent are very simple and contain only two
+# As you can see, the properties of our agent are very simple and contain only two
 # parameters that are needed to store context from one time step to the next. All
 # other properties needed are stored in the space. `pos` is three-dimensional, two
 # for the actual space agents move within, and a third categorical dimension representing
