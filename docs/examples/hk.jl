@@ -127,7 +127,7 @@ end
 data = model_run(numagents = 100)
 data[(end-19):end, :]
 
-# Notice that here we didn't speciy when to collect data, so this is done at every step.
+# Notice that here we didn't specify when to collect data, so this is done at every step.
 # Instead, we could collect data only at the final step, by re-using the same
 # function for the `when` argument:
 

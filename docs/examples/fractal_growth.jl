@@ -8,7 +8,7 @@
 
 # This model follows the process known as diffusion-limited aggregation to simulate the growth of fractals.
 # It is a kinetic process that consists of randomly diffusing particles giving rise to fractal-like structures
-# resembling those observed naturally. This examplet is based off of
+# resembling those observed naturally. This example is based off of
 # ["Particularly Stuck" example](https://www.complexity-explorables.org/explorables/particularly-stuck/)
 # in Complexity Explorables.
 
@@ -61,7 +61,7 @@ function initialize_model(;
     vibration = 0.55, # amplitude of particle vibration
     attraction = 0.45, # velocity of particles towards the center
     spin = 0.55, # tangential velocity with which particles orbit the center
-    ## fraction of particles orbiting clockwise. The rest are anticlockwise
+    ## fraction of particles orbiting clockwise. The rest are anti-clockwise
     clockwise_fraction = 0.0,
     min_radius = 1.0, # minimum radius of any particle
     max_radius = 2.0, # maximum radius of any particle

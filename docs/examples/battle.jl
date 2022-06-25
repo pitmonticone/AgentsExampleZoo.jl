@@ -241,7 +241,7 @@ end
 # the neighbors at this time. `(3, -1:1)` is therefore more accurate representation.
 #
 # A more complex example is that of `strong_ids`. We are looking for agents with a level
-# 2-4 points higher withing a distance of `(5, 5)`. The range search becomes a little
+# 2-4 points higher within a distance of `(5, 5)`. The range search becomes a little
 # verbose, but precise. An equivalent tuple search is not completely possible however.
 # The closest solution is `(5, 5, 4)`, which also looks for *weaker* opponents and must
 # be filtered to the correct neighbor set after the fact. In this instance the range
@@ -326,7 +326,7 @@ end
 # ## Let the Battle Begin
 # We need to write entirely custom plotting here, because we have a 3D space
 # (that would be plotted as 3D), but we actually only want to plot the first
-# two dimensions of the space. Thankfully, the infastructure of `ABMObservable` makes this
+# two dimensions of the space. Thankfully, the infrastructure of `ABMObservable` makes this
 # straightforward.
 abmobs = ABMObservable(model; agent_step!)
 modelobs = abmobs.model
